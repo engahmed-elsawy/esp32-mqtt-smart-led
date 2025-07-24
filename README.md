@@ -1,32 +1,39 @@
-# ESP32 Smart LED Control System via MQTT
+# 🔌 ESP32 Smart LED Control System via MQTT
 
-## Overview
+## 🌡️ Overview
+This project uses an **ESP32** to monitor temperature via an **NTC thermistor** and control a **relay-connected LED** in two operating modes:
 
-ESP32 reads temperature via an NTC thermistor and controls a relay-connected LED in two modes:
+- **🔁 Auto Mode**:  
+  - The relay (and LED) turns **ON** if the temperature exceeds a defined threshold.  
+  - Turns **OFF** when temperature drops below the threshold.
 
-- **Auto Mode:** Relay turns on if temp > threshold, otherwise off.
-- **Manual Mode:** LED/relay can be controlled remotely via MQTT commands.
+- **🎮 Manual Mode**:  
+  - The relay can be turned **ON/OFF remotely** using MQTT commands from a PC or another client.
 
-## Setup
+---
 
-### ESP32 (MicroPython)
-- Copy `esp32_code/main.py` to your ESP32.
-- Connect hardware:
-  - NTC thermistor + 10kΩ resistor as voltage divider to GPIO34.
-  - Relay module to GPIO2 (and LED between NO–COM).
-- Run code. Open serial monitor to verify Wi-Fi and MQTT connectivity.
+## 🔧 Setup
 
-### PC (Python)
-- Install dependencies: `pip install paho-mqtt`
-- Run with `python mqtt_controller.py`.
-- Interact via menu to send mode, relay, and threshold commands.
+### 📱 ESP32 (MicroPython)
 
-## MQTT topics
+1. Copy `esp32_code/main.py` to your ESP32.
+2. Connect hardware:
+   - **NTC Thermistor** + 10kΩ resistor as a voltage divider → **GPIO34**
+   - **Relay Module** control pin → **GPIO2**
+   - LED connected between **NO–COM** on the relay
+3. Run the code.
+4. Open the **Serial Monitor** to verify:
+   - Wi-Fi connection
+   - MQTT broker connectivity
 
-- `esp32/temp` — publishes current temperature.
-- `esp32/mode` — set operation mode (`auto` or `manual`).
-- `esp32/relay_cmd` — send relay commands (`on` / `off`).
-- `esp32/set_threshold` — update temperature threshold.
+---
+
+### 💻 PC (Python MQTT Controller)
+
+1. Install required library:
+   ```bash
+   pip install paho-mqtt
+
 
 ---
 
