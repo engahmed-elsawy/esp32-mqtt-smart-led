@@ -11,6 +11,8 @@ This project uses an **ESP32** to monitor temperature via an **NTC thermistor** 
 - Relay can be **turned ON/OFF remotely** using MQTT commands from a PC or another MQTT client.  
 
 ---
+![Circuit Diagram](circuit_diagram/circuit.png)
+
 
 ## 🔧 Setup
 
